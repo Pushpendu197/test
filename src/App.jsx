@@ -1,5 +1,6 @@
 import React from 'react'
-import Demo from './Components/demo'
+import Demo from './Components/Demo'
+
 
 function App() {
     return (
