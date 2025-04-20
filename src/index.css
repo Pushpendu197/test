@@ -8,5 +8,137 @@
 }
 
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background: url('https: //www.transparenttextures.com/patterns/asfalt-light.png');
+}
+
+
+@layer utilities {
+    .bg-animated-grid {
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 30px 30px;
+        animation: moveGrid 20s linear infinite;
+    }
+
+    @keyframes moveGrid {
+        from {
+            background-position: 0 0;
+        }
+
+        to {
+            background-position: 40px 40px;
+        }
+    }
+}
+
+
+.custom-hr {
+    background-image: repeating-linear-gradient(to right,
+            rgb(252, 250, 250),
+            rgb(249, 245, 245) 5px,
+            transparent 5px,
+            transparent 10px);
+    animation: move-dots 2s linear infinite;
+    height: 2px;
+}
+
+@keyframes move-dots {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 20px 0;
+    }
+}
+
+
+.spiral-line {
+    background-image: repeating-conic-gradient(from 0deg,
+            rgba(225, 206, 206, 0.963) 0deg 10deg,
+            transparent 10deg 20deg);
+    background-size: 100% 100%;
+    animation: rotate-spiral 2s linear infinite;
+}
+
+@keyframes rotate-spiral {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@layer utilities {
+    .shadow-glow {
+        box-shadow: 0 0 20px rgba(45, 55, 72, 0.6), 0 0 40px rgba(26, 32, 44, 0.4);
+    }
+
+    @keyframes glow {
+
+        0%,
+        100% {
+            opacity: 0.7;
+            filter: blur(20px);
+        }
+
+        50% {
+            opacity: 1;
+            filter: blur(25px);
+        }
+    }
+
+    .animate-glow {
+        animation: glow 4s ease-in-out infinite;
+    }
+}
+
+
+.animated-gradient-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #4FD1C5, #805AD5, #2D3748);
+    animation: pulseGradient 6s ease-in-out infinite;
+    z-index: 0;
+    opacity: 0.15;
+
+    mask-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8d/Donald_Duck_head.svg');
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 60%;
+    mask-mode: alpha;
+
+    -webkit-mask-image: url('https://upload.wikimedia.org/wikipedia/commons/8/8d/Donald_Duck_head.svg');
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: 60%;
+    -webkit-mask-mode: alpha;
+}
+
+@keyframes pulseGradient {
+    0% {
+        background-position: center;
+        transform: scale(1);
+    }
+
+    50% {
+        background-position: 60% 40%;
+        transform: scale(1.05);
+    }
+
+    100% {
+        background-position: center;
+        transform: scale(1);
+    }
 }
